@@ -349,8 +349,6 @@ mostCurrent._extra._load_category_main(mostCurrent.activityBA);
 mostCurrent._main_scrollview.getPanel().LoadLayout("main_panel",mostCurrent.activityBA);
  //BA.debugLineNum = 30;BA.debugLine="category_hscrollview.Panel.LoadLayout(\"category\")";
 mostCurrent._category_hscrollview.getPanel().LoadLayout("category",mostCurrent.activityBA);
- //BA.debugLineNum = 31;BA.debugLine="category_hscrollview.Panel.Width = 800dip";
-mostCurrent._category_hscrollview.getPanel().setWidth(anywheresoftware.b4a.keywords.Common.DipToCurrent((int) (800)));
  //BA.debugLineNum = 32;BA.debugLine="End Sub";
 return "";
 }
@@ -416,19 +414,31 @@ _text = BA.ObjectToString(_colroot.Get((Object)("text")));
 _lable = new anywheresoftware.b4a.objects.LabelWrapper();
  //BA.debugLineNum = 53;BA.debugLine="lable.Initialize(\"lable\")";
 _lable.Initialize(mostCurrent.activityBA,"lable");
- //BA.debugLineNum = 54;BA.debugLine="lable.Color = Colors.Black";
-_lable.setColor(anywheresoftware.b4a.keywords.Common.Colors.Black);
- //BA.debugLineNum = 55;BA.debugLine="lable.Text = text";
+ //BA.debugLineNum = 54;BA.debugLine="lable.Color = Colors.rgb(102, 187, 106)";
+_lable.setColor(anywheresoftware.b4a.keywords.Common.Colors.RGB((int) (102),(int) (187),(int) (106)));
+ //BA.debugLineNum = 55;BA.debugLine="lable.TextColor = Colors.White";
+_lable.setTextColor(anywheresoftware.b4a.keywords.Common.Colors.White);
+ //BA.debugLineNum = 56;BA.debugLine="lable.Gravity = Gravity.CENTER";
+_lable.setGravity(anywheresoftware.b4a.keywords.Common.Gravity.CENTER);
+ //BA.debugLineNum = 57;BA.debugLine="lable.Typeface = Typeface.LoadFromAssets(\"yeka";
+_lable.setTypeface(anywheresoftware.b4a.keywords.Common.Typeface.LoadFromAssets("yekan.ttf"));
+ //BA.debugLineNum = 58;BA.debugLine="lable.TextSize = \"20\"";
+_lable.setTextSize((float)(Double.parseDouble("20")));
+ //BA.debugLineNum = 59;BA.debugLine="lable.Text = text";
 _lable.setText(BA.ObjectToCharSequence(_text));
- //BA.debugLineNum = 56;BA.debugLine="category_panel.AddView(lable,left,5dip,(text.L";
-mostCurrent._category_panel.AddView((android.view.View)(_lable.getObject()),_left,anywheresoftware.b4a.keywords.Common.DipToCurrent((int) (5)),(int) ((_text.length()*40)),anywheresoftware.b4a.keywords.Common.DipToCurrent((int) (45)));
- //BA.debugLineNum = 57;BA.debugLine="left = left +50dip";
-_left = (int) (_left+anywheresoftware.b4a.keywords.Common.DipToCurrent((int) (50)));
+ //BA.debugLineNum = 60;BA.debugLine="category_panel.AddView(lable,left,5dip,(text.L";
+mostCurrent._category_panel.AddView((android.view.View)(_lable.getObject()),_left,anywheresoftware.b4a.keywords.Common.DipToCurrent((int) (5)),(int) ((_text.length()*30)),anywheresoftware.b4a.keywords.Common.DipToCurrent((int) (45)));
+ //BA.debugLineNum = 61;BA.debugLine="left =( text.Length * 30  ) + left +10dip";
+_left = (int) ((_text.length()*30)+_left+anywheresoftware.b4a.keywords.Common.DipToCurrent((int) (10)));
  }
 };
+ //BA.debugLineNum = 63;BA.debugLine="category_panel.Width = left + 10dip";
+mostCurrent._category_panel.setWidth((int) (_left+anywheresoftware.b4a.keywords.Common.DipToCurrent((int) (10))));
+ //BA.debugLineNum = 64;BA.debugLine="category_hscrollview.Panel.Width = left + 10dip";
+mostCurrent._category_hscrollview.getPanel().setWidth((int) (_left+anywheresoftware.b4a.keywords.Common.DipToCurrent((int) (10))));
  };
  };
- //BA.debugLineNum = 61;BA.debugLine="End Sub";
+ //BA.debugLineNum = 67;BA.debugLine="End Sub";
 return "";
 }
 public static String  _process_globals() throws Exception{

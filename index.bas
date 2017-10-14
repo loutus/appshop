@@ -34,6 +34,7 @@ Sub Activity_Create(FirstTime As Boolean)
 	main_scrollview.Panel.LoadLayout("main_panel")
 	category_hscrollview.Panel.LoadLayout("category")
 	category_hscrollview.Panel.Width = 800dip
+	
 End Sub
 
 Sub Activity_Resume
@@ -56,11 +57,17 @@ Sub jobdone(job As HttpJob)
 				Dim text As String = colroot.Get("text")
 				Dim lable As Label
 				lable.Initialize("lable")
-				lable.Color = Colors.Black
+				lable.Color = Colors.rgb(102, 187, 106)
+				lable.TextColor = Colors.White
+				lable.Gravity = Gravity.CENTER
+				lable.Typeface = Typeface.LoadFromAssets("yekan.ttf")
+				lable.TextSize = "20"
 				lable.Text = text
-				category_panel.AddView(lable,left,5dip,(text.Length * 40 ),45dip)
-				left = left +50dip
+				category_panel.AddView(lable,left,5dip,(text.Length * 30 ),45dip)
+				left =( text.Length * 30  ) + left +10dip
 			Next
+			category_panel.Width = left + 10dip
+			category_hscrollview.Panel.Width = left + 10dip
 		End If
 	End If
 End Sub
