@@ -28,6 +28,18 @@ _load_category._poststring(_api,"op=category");
  //BA.debugLineNum = 12;BA.debugLine="End Sub";
 return "";
 }
+public static String  _load_headbaner_main(anywheresoftware.b4a.BA _ba) throws Exception{
+anywheresoftware.b4a.samples.httputils2.httpjob _load_category = null;
+ //BA.debugLineNum = 14;BA.debugLine="Sub load_headbaner_main()";
+ //BA.debugLineNum = 15;BA.debugLine="Dim load_category As HttpJob";
+_load_category = new anywheresoftware.b4a.samples.httputils2.httpjob();
+ //BA.debugLineNum = 16;BA.debugLine="load_category.Initialize(\"load_headbaner_main\",in";
+_load_category._initialize((_ba.processBA == null ? _ba : _ba.processBA),"load_headbaner_main",(Object)(mostCurrent._index.getObject()));
+ //BA.debugLineNum = 17;BA.debugLine="load_category.PostString(api,\"op=headbaner\")";
+_load_category._poststring(_api,"op=headbaner");
+ //BA.debugLineNum = 18;BA.debugLine="End Sub";
+return "";
+}
 public static String  _process_globals() throws Exception{
  //BA.debugLineNum = 3;BA.debugLine="Sub Process_Globals";
  //BA.debugLineNum = 6;BA.debugLine="Dim api As String";

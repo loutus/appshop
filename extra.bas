@@ -15,3 +15,9 @@ Sub load_category_main()
 	load_category.Initialize("load_category_main",index)
 	load_category.PostString(api,"op=category")
 End Sub
+
+Sub load_headbaner_main()
+	Dim load_category As HttpJob
+	load_category.Initialize("load_headbaner_main",index)
+	load_category.PostString(api,"op=headbaner")
+End Sub

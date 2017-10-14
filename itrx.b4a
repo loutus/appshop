@@ -12,10 +12,11 @@ File2=main.bal
 File3=main_panel.bal
 File4=welcome.bal
 File5=yekan.ttf
-NumberOfLibraries=3
+NumberOfLibraries=4
 Library1=core
 Library2=json
 Library3=okhttputils2
+Library4=androidslider
 @EndOfDesignText@
 #Region  Project Attributes 
 	#ApplicationLabel: itrx

@@ -22,18 +22,22 @@ Sub Globals
 	Private main_scrollview As ScrollView
 	Private category_hscrollview As HorizontalScrollView
 	Private category_panel As Panel
+	Private main_baner As ImageView
+	Dim head_slider As Slider
 End Sub
 
 Sub Activity_Create(FirstTime As Boolean)
 	'Do not forget to load the layout file created with the visual designer. For example:
 	Activity.LoadLayout("main")
 	header_logo.Bitmap = LoadBitmap(File.DirAssets,"setting/header_logo.png")
-	
+
 	extra.load_category_main
-		
+	extra.load_headbaner_main
+	
 	main_scrollview.Panel.LoadLayout("main_panel")
+	main_baner.Bitmap = LoadBitmap(File.DirAssets,"setting/main_baner.jpg")
+	main_scrollview.Panel.Height = 1500dip
 	category_hscrollview.Panel.LoadLayout("category")
-	category_hscrollview.Panel.Width = 800dip
 	
 End Sub
 
@@ -47,6 +51,17 @@ End Sub
 
 Sub jobdone(job As HttpJob)
 	If job.Success = True Then
+		If job.JobName = "load_headbaner_main" Then
+			Dim parser As JSONParser
+			parser.Initialize(job.GetString)
+			Dim root As List = parser.NextArray
+			For Each colroot As Map In root
+				Dim id As String = colroot.Get("id")
+				Dim text As String = colroot.Get("text")
+				Dim pic As String = colroot.Get("pic")
+				
+			Next
+		End If
 		If job.JobName = "load_category_main" Then
 			Dim left As Int=20dip
 			Dim parser As JSONParser
@@ -64,10 +79,12 @@ Sub jobdone(job As HttpJob)
 				lable.TextSize = "20"
 				lable.Text = text
 				category_panel.AddView(lable,left,5dip,(text.Length * 30 ),45dip)
-				left =( text.Length * 30  ) + left +10dip
+				left =( text.Length * 30  ) + left +8dip
 			Next
 			category_panel.Width = left + 10dip
-			category_hscrollview.Panel.Width = left + 10dip
+			category_hscrollview.Panel.Width = left + 8dip
+			category_hscrollview.FullScroll(True)
+			category_hscrollview.ScrollPosition = 50dip
 		End If
 	End If
 End Sub

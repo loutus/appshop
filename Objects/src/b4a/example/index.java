@@ -325,6 +325,8 @@ public anywheresoftware.b4a.objects.ImageViewWrapper _header_logo = null;
 public anywheresoftware.b4a.objects.ScrollViewWrapper _main_scrollview = null;
 public anywheresoftware.b4a.objects.HorizontalScrollViewWrapper _category_hscrollview = null;
 public anywheresoftware.b4a.objects.PanelWrapper _category_panel = null;
+public anywheresoftware.b4a.objects.ImageViewWrapper _main_baner = null;
+public AndroidSlider.SliderLibrary.Slider _head_slider = null;
 public anywheresoftware.b4a.samples.httputils2.httputils2service _httputils2service = null;
 public b4a.example.main _main = null;
 public b4a.example.starter _starter = null;
@@ -338,28 +340,34 @@ public static void initializeProcessGlobals() {
             }
 }
 public static String  _activity_create(boolean _firsttime) throws Exception{
- //BA.debugLineNum = 22;BA.debugLine="Sub Activity_Create(FirstTime As Boolean)";
- //BA.debugLineNum = 24;BA.debugLine="Activity.LoadLayout(\"main\")";
+ //BA.debugLineNum = 24;BA.debugLine="Sub Activity_Create(FirstTime As Boolean)";
+ //BA.debugLineNum = 26;BA.debugLine="Activity.LoadLayout(\"main\")";
 mostCurrent._activity.LoadLayout("main",mostCurrent.activityBA);
- //BA.debugLineNum = 25;BA.debugLine="header_logo.Bitmap = LoadBitmap(File.DirAssets,\"s";
+ //BA.debugLineNum = 27;BA.debugLine="header_logo.Bitmap = LoadBitmap(File.DirAssets,\"s";
 mostCurrent._header_logo.setBitmap((android.graphics.Bitmap)(anywheresoftware.b4a.keywords.Common.LoadBitmap(anywheresoftware.b4a.keywords.Common.File.getDirAssets(),"setting/header_logo.png").getObject()));
- //BA.debugLineNum = 27;BA.debugLine="extra.load_category_main";
+ //BA.debugLineNum = 29;BA.debugLine="extra.load_category_main";
 mostCurrent._extra._load_category_main(mostCurrent.activityBA);
- //BA.debugLineNum = 29;BA.debugLine="main_scrollview.Panel.LoadLayout(\"main_panel\")";
+ //BA.debugLineNum = 30;BA.debugLine="extra.load_headbaner_main";
+mostCurrent._extra._load_headbaner_main(mostCurrent.activityBA);
+ //BA.debugLineNum = 32;BA.debugLine="main_scrollview.Panel.LoadLayout(\"main_panel\")";
 mostCurrent._main_scrollview.getPanel().LoadLayout("main_panel",mostCurrent.activityBA);
- //BA.debugLineNum = 30;BA.debugLine="category_hscrollview.Panel.LoadLayout(\"category\")";
+ //BA.debugLineNum = 33;BA.debugLine="main_baner.Bitmap = LoadBitmap(File.DirAssets,\"se";
+mostCurrent._main_baner.setBitmap((android.graphics.Bitmap)(anywheresoftware.b4a.keywords.Common.LoadBitmap(anywheresoftware.b4a.keywords.Common.File.getDirAssets(),"setting/main_baner.jpg").getObject()));
+ //BA.debugLineNum = 34;BA.debugLine="main_scrollview.Panel.Height = 1500dip";
+mostCurrent._main_scrollview.getPanel().setHeight(anywheresoftware.b4a.keywords.Common.DipToCurrent((int) (1500)));
+ //BA.debugLineNum = 35;BA.debugLine="category_hscrollview.Panel.LoadLayout(\"category\")";
 mostCurrent._category_hscrollview.getPanel().LoadLayout("category",mostCurrent.activityBA);
- //BA.debugLineNum = 32;BA.debugLine="End Sub";
+ //BA.debugLineNum = 37;BA.debugLine="End Sub";
 return "";
 }
 public static String  _activity_pause(boolean _userclosed) throws Exception{
- //BA.debugLineNum = 38;BA.debugLine="Sub Activity_Pause (UserClosed As Boolean)";
- //BA.debugLineNum = 40;BA.debugLine="End Sub";
+ //BA.debugLineNum = 43;BA.debugLine="Sub Activity_Pause (UserClosed As Boolean)";
+ //BA.debugLineNum = 45;BA.debugLine="End Sub";
 return "";
 }
 public static String  _activity_resume() throws Exception{
- //BA.debugLineNum = 34;BA.debugLine="Sub Activity_Resume";
- //BA.debugLineNum = 36;BA.debugLine="End Sub";
+ //BA.debugLineNum = 39;BA.debugLine="Sub Activity_Resume";
+ //BA.debugLineNum = 41;BA.debugLine="End Sub";
 return "";
 }
 public static String  _globals() throws Exception{
@@ -372,7 +380,11 @@ mostCurrent._main_scrollview = new anywheresoftware.b4a.objects.ScrollViewWrappe
 mostCurrent._category_hscrollview = new anywheresoftware.b4a.objects.HorizontalScrollViewWrapper();
  //BA.debugLineNum = 19;BA.debugLine="Private category_panel As Panel";
 mostCurrent._category_panel = new anywheresoftware.b4a.objects.PanelWrapper();
- //BA.debugLineNum = 20;BA.debugLine="End Sub";
+ //BA.debugLineNum = 20;BA.debugLine="Private main_baner As ImageView";
+mostCurrent._main_baner = new anywheresoftware.b4a.objects.ImageViewWrapper();
+ //BA.debugLineNum = 21;BA.debugLine="Dim head_slider As Slider";
+mostCurrent._head_slider = new AndroidSlider.SliderLibrary.Slider();
+ //BA.debugLineNum = 22;BA.debugLine="End Sub";
 return "";
 }
 public static String  _jobdone(anywheresoftware.b4a.samples.httputils2.httpjob _job) throws Exception{
@@ -383,62 +395,71 @@ anywheresoftware.b4a.objects.collections.Map _colroot = null;
 String _id = "";
 String _text = "";
 anywheresoftware.b4a.objects.LabelWrapper _lable = null;
- //BA.debugLineNum = 42;BA.debugLine="Sub jobdone(job As HttpJob)";
- //BA.debugLineNum = 43;BA.debugLine="If job.Success = True Then";
+ //BA.debugLineNum = 47;BA.debugLine="Sub jobdone(job As HttpJob)";
+ //BA.debugLineNum = 48;BA.debugLine="If job.Success = True Then";
 if (_job._success==anywheresoftware.b4a.keywords.Common.True) { 
- //BA.debugLineNum = 44;BA.debugLine="If job.JobName = \"load_category_main\" Then";
+ //BA.debugLineNum = 49;BA.debugLine="If job.JobName = \"load_headbaner_main\" Then";
+if ((_job._jobname).equals("load_headbaner_main")) { 
+ //BA.debugLineNum = 50;BA.debugLine="Log(job.GetString)";
+anywheresoftware.b4a.keywords.Common.Log(_job._getstring());
+ };
+ //BA.debugLineNum = 52;BA.debugLine="If job.JobName = \"load_category_main\" Then";
 if ((_job._jobname).equals("load_category_main")) { 
- //BA.debugLineNum = 45;BA.debugLine="Dim left As Int=20dip";
+ //BA.debugLineNum = 53;BA.debugLine="Dim left As Int=20dip";
 _left = anywheresoftware.b4a.keywords.Common.DipToCurrent((int) (20));
- //BA.debugLineNum = 46;BA.debugLine="Dim parser As JSONParser";
+ //BA.debugLineNum = 54;BA.debugLine="Dim parser As JSONParser";
 _parser = new anywheresoftware.b4a.objects.collections.JSONParser();
- //BA.debugLineNum = 47;BA.debugLine="parser.Initialize(job.GetString)";
+ //BA.debugLineNum = 55;BA.debugLine="parser.Initialize(job.GetString)";
 _parser.Initialize(_job._getstring());
- //BA.debugLineNum = 48;BA.debugLine="Dim root As List = parser.NextArray";
+ //BA.debugLineNum = 56;BA.debugLine="Dim root As List = parser.NextArray";
 _root = new anywheresoftware.b4a.objects.collections.List();
 _root = _parser.NextArray();
- //BA.debugLineNum = 49;BA.debugLine="For Each colroot As Map In root";
+ //BA.debugLineNum = 57;BA.debugLine="For Each colroot As Map In root";
 _colroot = new anywheresoftware.b4a.objects.collections.Map();
 {
-final anywheresoftware.b4a.BA.IterableList group7 = _root;
-final int groupLen7 = group7.getSize()
-;int index7 = 0;
+final anywheresoftware.b4a.BA.IterableList group10 = _root;
+final int groupLen10 = group10.getSize()
+;int index10 = 0;
 ;
-for (; index7 < groupLen7;index7++){
-_colroot.setObject((anywheresoftware.b4a.objects.collections.Map.MyMap)(group7.Get(index7)));
- //BA.debugLineNum = 50;BA.debugLine="Dim id As String = colroot.Get(\"id\")";
+for (; index10 < groupLen10;index10++){
+_colroot.setObject((anywheresoftware.b4a.objects.collections.Map.MyMap)(group10.Get(index10)));
+ //BA.debugLineNum = 58;BA.debugLine="Dim id As String = colroot.Get(\"id\")";
 _id = BA.ObjectToString(_colroot.Get((Object)("id")));
- //BA.debugLineNum = 51;BA.debugLine="Dim text As String = colroot.Get(\"text\")";
+ //BA.debugLineNum = 59;BA.debugLine="Dim text As String = colroot.Get(\"text\")";
 _text = BA.ObjectToString(_colroot.Get((Object)("text")));
- //BA.debugLineNum = 52;BA.debugLine="Dim lable As Label";
+ //BA.debugLineNum = 60;BA.debugLine="Dim lable As Label";
 _lable = new anywheresoftware.b4a.objects.LabelWrapper();
- //BA.debugLineNum = 53;BA.debugLine="lable.Initialize(\"lable\")";
+ //BA.debugLineNum = 61;BA.debugLine="lable.Initialize(\"lable\")";
 _lable.Initialize(mostCurrent.activityBA,"lable");
- //BA.debugLineNum = 54;BA.debugLine="lable.Color = Colors.rgb(102, 187, 106)";
+ //BA.debugLineNum = 62;BA.debugLine="lable.Color = Colors.rgb(102, 187, 106)";
 _lable.setColor(anywheresoftware.b4a.keywords.Common.Colors.RGB((int) (102),(int) (187),(int) (106)));
- //BA.debugLineNum = 55;BA.debugLine="lable.TextColor = Colors.White";
+ //BA.debugLineNum = 63;BA.debugLine="lable.TextColor = Colors.White";
 _lable.setTextColor(anywheresoftware.b4a.keywords.Common.Colors.White);
- //BA.debugLineNum = 56;BA.debugLine="lable.Gravity = Gravity.CENTER";
+ //BA.debugLineNum = 64;BA.debugLine="lable.Gravity = Gravity.CENTER";
 _lable.setGravity(anywheresoftware.b4a.keywords.Common.Gravity.CENTER);
- //BA.debugLineNum = 57;BA.debugLine="lable.Typeface = Typeface.LoadFromAssets(\"yeka";
+ //BA.debugLineNum = 65;BA.debugLine="lable.Typeface = Typeface.LoadFromAssets(\"yeka";
 _lable.setTypeface(anywheresoftware.b4a.keywords.Common.Typeface.LoadFromAssets("yekan.ttf"));
- //BA.debugLineNum = 58;BA.debugLine="lable.TextSize = \"20\"";
+ //BA.debugLineNum = 66;BA.debugLine="lable.TextSize = \"20\"";
 _lable.setTextSize((float)(Double.parseDouble("20")));
- //BA.debugLineNum = 59;BA.debugLine="lable.Text = text";
+ //BA.debugLineNum = 67;BA.debugLine="lable.Text = text";
 _lable.setText(BA.ObjectToCharSequence(_text));
- //BA.debugLineNum = 60;BA.debugLine="category_panel.AddView(lable,left,5dip,(text.L";
+ //BA.debugLineNum = 68;BA.debugLine="category_panel.AddView(lable,left,5dip,(text.L";
 mostCurrent._category_panel.AddView((android.view.View)(_lable.getObject()),_left,anywheresoftware.b4a.keywords.Common.DipToCurrent((int) (5)),(int) ((_text.length()*30)),anywheresoftware.b4a.keywords.Common.DipToCurrent((int) (45)));
- //BA.debugLineNum = 61;BA.debugLine="left =( text.Length * 30  ) + left +10dip";
-_left = (int) ((_text.length()*30)+_left+anywheresoftware.b4a.keywords.Common.DipToCurrent((int) (10)));
+ //BA.debugLineNum = 69;BA.debugLine="left =( text.Length * 30  ) + left +8dip";
+_left = (int) ((_text.length()*30)+_left+anywheresoftware.b4a.keywords.Common.DipToCurrent((int) (8)));
  }
 };
- //BA.debugLineNum = 63;BA.debugLine="category_panel.Width = left + 10dip";
+ //BA.debugLineNum = 71;BA.debugLine="category_panel.Width = left + 10dip";
 mostCurrent._category_panel.setWidth((int) (_left+anywheresoftware.b4a.keywords.Common.DipToCurrent((int) (10))));
- //BA.debugLineNum = 64;BA.debugLine="category_hscrollview.Panel.Width = left + 10dip";
-mostCurrent._category_hscrollview.getPanel().setWidth((int) (_left+anywheresoftware.b4a.keywords.Common.DipToCurrent((int) (10))));
+ //BA.debugLineNum = 72;BA.debugLine="category_hscrollview.Panel.Width = left + 8dip";
+mostCurrent._category_hscrollview.getPanel().setWidth((int) (_left+anywheresoftware.b4a.keywords.Common.DipToCurrent((int) (8))));
+ //BA.debugLineNum = 73;BA.debugLine="category_hscrollview.FullScroll(True)";
+mostCurrent._category_hscrollview.FullScroll(anywheresoftware.b4a.keywords.Common.True);
+ //BA.debugLineNum = 74;BA.debugLine="category_hscrollview.ScrollPosition = 50dip";
+mostCurrent._category_hscrollview.setScrollPosition(anywheresoftware.b4a.keywords.Common.DipToCurrent((int) (50)));
  };
  };
- //BA.debugLineNum = 67;BA.debugLine="End Sub";
+ //BA.debugLineNum = 77;BA.debugLine="End Sub";
 return "";
 }
 public static String  _process_globals() throws Exception{
