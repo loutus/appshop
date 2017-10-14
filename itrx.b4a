@@ -1,0 +1,84 @@
+﻿Version=7.01
+NumberOfModules=3
+Module1=Starter
+Module2=extra
+Module3=index
+Build1=Default,b4a.example
+ManifestCode='This code will be applied to the manifest file during compilation.~\n~'You do not need to modify it in most cases.~\n~'See this link for for more information: https://www.b4x.com/forum/showthread.php?p=78136~\n~AddManifestText(~\n~<uses-sdk android:minSdkVersion="5" android:targetSdkVersion="19"/>~\n~<supports-screens android:largeScreens="true" ~\n~    android:normalScreens="true" ~\n~    android:smallScreens="true" ~\n~    android:anyDensity="true"/>)~\n~SetApplicationAttribute(android:icon, "@drawable/icon")~\n~SetApplicationAttribute(android:label, "$LABEL$")~\n~'End of default text.~\n~
+IconFile=
+NumberOfFiles=5
+File1=category.bal
+File2=main.bal
+File3=main_panel.bal
+File4=welcome.bal
+File5=yekan.ttf
+NumberOfLibraries=3
+Library1=core
+Library2=json
+Library3=okhttputils2
+@EndOfDesignText@
+#Region  Project Attributes 
+	#ApplicationLabel: itrx
+	#VersionCode: 1
+	#VersionName: 
+	'SupportedOrientations possible values: unspecified, landscape or portrait.
+	#SupportedOrientations: portrait
+	#CanInstallToExternalStorage: False
+#End Region
+
+#Region  Activity Attributes 
+	#FullScreen: False
+	#IncludeTitle: False
+#End Region
+
+Sub Process_Globals
+	'These global variables will be declared once when the application starts.
+	'These variables can be accessed from all modules.
+
+End Sub
+Sub Globals
+	'These global variables will be redeclared each time the activity is created.
+	'These variables can only be accessed from this module.
+	Private welcome_logo As ImageView
+	Dim timer_cheknet As Timer
+	Private welcome_text As Label
+
+End Sub
+
+Sub Activity_Create(FirstTime As Boolean)
+	 extra.api = File.ReadString(File.DirAssets,"setting/api.txt")
+	'Do not forget to load the layout file created with the visual designer. For example:
+	 Activity.LoadLayout("welcome")
+	 welcome_logo.Bitmap = LoadBitmap(File.DirAssets,"setting/logo.png")
+	 timer_cheknet.Initialize("timer_cheknet",2000)
+	 timer_cheknet.Enabled = True
+End Sub
+Sub Activity_Resume
+
+End Sub
+Sub Activity_Pause (UserClosed As Boolean)
+
+End Sub
+Sub jobdone(job As HttpJob)
+	If job.Success = True Then
+		If job.JobName = "cheknet" Then 
+			If job.GetString = "ok" Then 
+				Log(job.GetString)
+				timer_cheknet.Enabled = False
+					StartActivity(index)
+					Activity.Finish
+				Else
+				welcome_text.Text = "اتصال خود به اینترنت را چک کنید"
+				timer_cheknet.Enabled = True
+			End If
+		End If
+	End If
+End Sub
+Sub cheknet()
+	Dim cheknetjob As HttpJob
+	cheknetjob.Initialize("cheknet",Me)
+	cheknetjob.PostString(extra.api,"op=cheknet")
+End Sub
+Sub timer_cheknet_Tick
+	cheknet
+End Sub
