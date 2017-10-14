@@ -12,11 +12,12 @@ File2=main.bal
 File3=main_panel.bal
 File4=welcome.bal
 File5=yekan.ttf
-NumberOfLibraries=4
+NumberOfLibraries=5
 Library1=core
 Library2=json
 Library3=okhttputils2
 Library4=androidslider
+Library5=ime
 @EndOfDesignText@
 #Region  Project Attributes 
 	#ApplicationLabel: itrx
@@ -25,6 +26,7 @@ Library4=androidslider
 	'SupportedOrientations possible values: unspecified, landscape or portrait.
 	#SupportedOrientations: portrait
 	#CanInstallToExternalStorage: False
+	#AdditionalRes: C:\Users\Shekaf\Downloads\Compressed\res\res, com.daimajia.slider.library
 #End Region
 
 #Region  Activity Attributes 

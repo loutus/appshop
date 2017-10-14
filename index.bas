@@ -52,6 +52,8 @@ End Sub
 Sub jobdone(job As HttpJob)
 	If job.Success = True Then
 		If job.JobName = "load_headbaner_main" Then
+			head_slider.Initialize("head_slider")
+			main_scrollview.Panel.AddView(head_slider,0,0,100%x,60%x)
 			Dim parser As JSONParser
 			parser.Initialize(job.GetString)
 			Dim root As List = parser.NextArray
@@ -59,8 +61,13 @@ Sub jobdone(job As HttpJob)
 				Dim id As String = colroot.Get("id")
 				Dim text As String = colroot.Get("text")
 				Dim pic As String = colroot.Get("pic")
-				
+				head_slider.AddSlide(text,pic)
 			Next
+			main_baner.Visible = False
+			head_slider.SetTransition(head_slider.SLIDER_TRANSITION_Fade)
+			head_slider.Delay = 5000
+			head_slider.Start
+			
 		End If
 		If job.JobName = "load_category_main" Then
 			Dim left As Int=20dip
@@ -69,7 +76,7 @@ Sub jobdone(job As HttpJob)
 			Dim root As List = parser.NextArray
 			For Each colroot As Map In root
 				Dim id As String = colroot.Get("id")
-				Dim text As String = colroot.Get("text")
+				Dim text As String = colroot.Get("name")
 				Dim lable As Label
 				lable.Initialize("lable")
 				lable.Color = Colors.rgb(102, 187, 106)
