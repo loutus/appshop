@@ -342,8 +342,8 @@ mostCurrent._extra._api = anywheresoftware.b4a.keywords.Common.File.ReadString(a
 mostCurrent._activity.LoadLayout("welcome",mostCurrent.activityBA);
  //BA.debugLineNum = 34;BA.debugLine="welcome_logo.Bitmap = LoadBitmap(File.DirAssets,";
 mostCurrent._welcome_logo.setBitmap((android.graphics.Bitmap)(anywheresoftware.b4a.keywords.Common.LoadBitmap(anywheresoftware.b4a.keywords.Common.File.getDirAssets(),"setting/logo.png").getObject()));
- //BA.debugLineNum = 35;BA.debugLine="timer_cheknet.Initialize(\"timer_cheknet\",2000)";
-mostCurrent._timer_cheknet.Initialize(processBA,"timer_cheknet",(long) (2000));
+ //BA.debugLineNum = 35;BA.debugLine="timer_cheknet.Initialize(\"timer_cheknet\",4000)";
+mostCurrent._timer_cheknet.Initialize(processBA,"timer_cheknet",(long) (4000));
  //BA.debugLineNum = 36;BA.debugLine="timer_cheknet.Enabled = True";
 mostCurrent._timer_cheknet.setEnabled(anywheresoftware.b4a.keywords.Common.True);
  //BA.debugLineNum = 37;BA.debugLine="End Sub";

@@ -2,7 +2,7 @@
 <manifest
 	xmlns:android="http://schemas.android.com/apk/res/android"
 	package="b4a.example"
-	android:versionCode="1"
+	android:versionCode="800"
 	android:versionName=""
 	android:installLocation="internalOnly">
 	

@@ -19,11 +19,8 @@ views.get("welcome_logo").vw.setTop((int)((20d / 100 * height)));
 views.get("welcome_logo").vw.setLeft((int)((25d / 100 * width)));
 views.get("welcome_text").vw.setLeft((int)(0d));
 views.get("welcome_text").vw.setWidth((int)((100d / 100 * width) - (0d)));
-//BA.debugLineNum = 12;BA.debugLine="welcome_text.Height = 45dip"[welcome/General script]
 views.get("welcome_text").vw.setHeight((int)((45d * scale)));
-//BA.debugLineNum = 13;BA.debugLine="welcome_text.TextSize = 12dip"[welcome/General script]
 ((anywheresoftware.b4a.keywords.LayoutBuilder.DesignerTextSizeMethod)views.get("welcome_text").vw).setTextSize((float)((12d * scale)));
-//BA.debugLineNum = 14;BA.debugLine="welcome_text.Bottom = 95%y"[welcome/General script]
 views.get("welcome_text").vw.setTop((int)((95d / 100 * height) - (views.get("welcome_text").vw.getHeight())));
 
 }
